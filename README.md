@@ -1,7 +1,7 @@
 # Python-Weather-Wtsp-Alert
 
 This Script consult in spanish the weather
-and then tak a screenshot, save the screen and
+and then take a screenshot, save the screen and
 send to a group of WhatsApp
 
 # tecnologies
