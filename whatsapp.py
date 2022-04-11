@@ -24,15 +24,19 @@ driver = webdriver.Chrome(service=driverService, options=options)
 
 driver.get('https://www.google.com')
 # catch element an write
-SearchInput = driver.find_element(By.NAME, "q")
+
+SearchInput = WebDriverWait(driver, 15).until(
+    EC.presence_of_element_located((By.NAME, "q"))
+)
+
 SearchInput.send_keys("clima" + Keys.ENTER)
 # precipitation = driver.find_element(By.ID, "wob_rain")
 
-precipitation = WebDriverWait(driver, 500).until(
+precipitation = WebDriverWait(driver, 15).until(
     EC.presence_of_element_located((By.ID, "wob_rain"))
 )
 precipitation.click()
-
+ts.sleep(2)
 timeNow = str(dt.datetime.now())
 timeNow = timeNow.replace(':', '-')
 timeNow = timeNow.replace('.', '-')
@@ -51,7 +55,7 @@ for group in groups:
     search_xpath = '//*[@id="side"]/div[1]/div/label/div/div[2]'
     # search_box.send_keys(group)
 
-    search_box = WebDriverWait(driver, 500).until(
+    search_box = WebDriverWait(driver, 15).until(
         EC.presence_of_element_located((By.XPATH, search_xpath))
     )
     search_box.send_keys(group)
@@ -64,11 +68,11 @@ for group in groups:
         By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[2]')
     clip_doc = driver.find_element(By.XPATH, '//span[@data-icon="clip"]')
     clip_doc.click()
-    # ts.sleep(1)
+    ts.sleep(1)
     # attach_doc = driver.find_element(By.XPATH, '//span[@data-icon="attach-image"]')
     # attach_doc.click()
-    ts.sleep(1)
-    input_image = driver.find_element(By.XPATH, '//input[@type="file"]')
+    # ts.sleep(1)
+    input_image = driver.find_element(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[1]/button/input')
 
     input_image.send_keys(loadScreen,Keys.ENTER)
 
