@@ -1,0 +1,1 @@
+BRAVE_PROFILE_PATH = "user-data-dir=C:/Users/franco}/AppData/Local/BraveSoftware/Brave-Browser/User Data/Wtsp"
